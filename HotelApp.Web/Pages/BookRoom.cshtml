@@ -6,20 +6,21 @@
 
 <h1>Book A Room</h1>
 
-<h2>Room Tile</h2>
+<h2>@Model.RoomType.Title</h2>
 
 <p>
-   Room Description
+   @Model.RoomType.Description
 </p>
 
 <form method="post">
    <div class="form-group">
-      <label asp-for="@Model.FirstName">First Name:</label>
+      <label asp-for="@Model.FirstName">First Name: </label>
       <input asp-for="@Model.FirstName" />
    </div>
       <div class="form-group">
       <label asp-for="@Model.LastName">Last Name:</label>
       <input asp-for="@Model.LastName" />
    </div>
-   <button type="submit" class="btn btn-primary">Book Room</button>
+   <br />
+   <button type="submit" class="btn btn-primary">Book The Room</button>
 </form>

@@ -64,10 +64,9 @@ public class SqlData : IDatabaseData
 
    public List<BookingFullModel> SearchBookings(string lastName)
    {
-      return _db.LoadData<BookingFullModel, dynamic>("dbo.spBookings_Search",
-                                              new { lastName, startDate = DateTime.Now.Date },
-                                              connectionStringName,
-                                              true);
+      return _db.LoadData<BookingFullModel, dynamic>( "dbo.spBookings_Search",
+                                                     new { lastName, startDate = DateTime.Now.Date },
+                                                     connectionStringName, true );
    }
 
    public void CheckInGuest(int bookingId)
@@ -76,6 +75,14 @@ public class SqlData : IDatabaseData
                    new { Id = bookingId },
                    connectionStringName,
                    true);
+   }
+
+   public RoomTypeModel GetRoomTypeById(int id )
+   {
+      return _db.LoadData<RoomTypeModel, dynamic>("dbo.spRoomTypes_GetById",
+                                                  new { id },
+                                                  connectionStringName,
+                                                  true ).FirstOrDefault();
    }
 
 }

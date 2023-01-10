@@ -4,19 +4,20 @@
    ViewData["Title"] = "Room Search";
 }
 
-<h1>Search For a Room</h1>
+<h1>Room Search</h1>
 
 
 <form method="post">
    <div class="form-group">
-      <label asp-for="@Model.StartDate">Start Date:</label>
+      <label asp-for="@Model.StartDate">Start Date: </label>
       <input type="date" asp-for="@Model.StartDate" />
    </div>
       <div class="form-group">
-      <label asp-for="@Model.EndDate">End Date:</label>
+      <label asp-for="@Model.EndDate">End Date: </label>
       <input type="date" asp-for="@Model.EndDate" />
    </div>
-   <button type="submit" class="btn btn-primary">Search</button>
+   <br />
+   <button type="submit" class="btn btn-primary">Search Rooms</button>
 </form>
 
 <!-- '?.'  if null do not do this if statement. -->
@@ -43,8 +44,8 @@
                </td>
                <td>@string.Format("{0:C}",room.Price)</td>
                <td><a asp-page="/BookRoom" asp-route-roomtypeid="@room.Id" 
-                    asp-route-startdate="@Model.StartDate.ToShortDateString()" 
-                    asp-route-enddate="@Model.EndDate.ToShortDateString()">Book Now</a></td>
+                    asp-route-startdate="@Model.StartDate" 
+                    asp-route-enddate="@Model.EndDate">Book Now</a></td>
             </tr>
          }
       </tbody>
