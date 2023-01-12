@@ -1,5 +1,9 @@
 using HotelAppLibrary.Data;
 using HotelAppLibrary.Databases;
+/* 
+ * NuGet Packages:
+ * Microsoft.DependencyValidation.Analyzers
+ */
 
 var builder = WebApplication.CreateBuilder(args);
 
