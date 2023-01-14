@@ -18,12 +18,12 @@ public class SqlData : IDatabaseData
       _db = db;
    }
 
-   public List<RoomTypeModel> GetAvailableRoomTypes(DateTime startDate, DateTime endDate)
+   public List<RoomTypeModel> GetAvailableRoomTypes( DateTime startDate, DateTime endDate )
    {
-      return _db.LoadData<RoomTypeModel, dynamic>("dbo.spRoomTypes_GetAvailableTypes",
+      return _db.LoadData<RoomTypeModel, dynamic>( "dbo.spRoomTypes_GetAvailableTypes",
                                            new { startDate, endDate },
                                            connectionStringName,
-                                           true);
+                                           true );
    }
 
    public void BookGuest(string firstName,
