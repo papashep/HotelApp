@@ -127,10 +127,17 @@ public class SqliteData : IDatabaseData
               FROM Bookings b INNER JOIN Guests g ON b.GuestId = g.Id 
                                   INNER JOIN Rooms r ON b.RoomId = r.Id 
                                   INNER JOIN RoomTypes rt ON r.RoomTypeId = rt.Id   
-              WHERE b.StartDate = @startDate AND g.LastName Like '%' + @lastName + '%';";
+              WHERE b.StartDate = @startDate AND g.LastName Like '%' || @lastName || '%';";
 
-      return _db.LoadData<BookingFullModel, dynamic>( sql,
+      var output = _db.LoadData<BookingFullModel, dynamic>( sql,
                                                      new { lastName, startDate = DateTime.Now.Date },
                                                      connectionStringName);
+
+      output.ForEach( x => {
+         x.Price = x.Price / 100;
+         x.TotalCost = x.TotalCost / 100;
+      });
+
+      return output;
    }
 }
